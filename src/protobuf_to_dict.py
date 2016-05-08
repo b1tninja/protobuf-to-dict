@@ -1,4 +1,4 @@
-from builtins import int, str
+from builtins import int, str, bytes
 
 from google.protobuf.descriptor import FieldDescriptor
 from google.protobuf.message import Message
@@ -25,8 +25,8 @@ TYPE_CALLABLE_MAP = {
     FieldDescriptor.TYPE_SFIXED64: int,
     FieldDescriptor.TYPE_BOOL: bool,
     FieldDescriptor.TYPE_STRING: str,
-    FieldDescriptor.TYPE_BYTES: lambda b: b.encode("base64"),
-    # FieldDescriptor.TYPE_BYTES: bytes,
+    # FieldDescriptor.TYPE_BYTES: lambda b: b.encode("base64"),
+    FieldDescriptor.TYPE_BYTES: bytes,
     FieldDescriptor.TYPE_ENUM: int,
 }
 
@@ -84,7 +84,7 @@ def get_bytes(value):
 
 
 REVERSE_TYPE_CALLABLE_MAP = {
-    FieldDescriptor.TYPE_BYTES: get_bytes,
+    # FieldDescriptor.TYPE_BYTES: get_bytes,
 }
 
 
